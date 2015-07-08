@@ -1,2 +1,6 @@
 *.js~
 *.ejs~
+.env
+.env~
+quiz.sqlite
+

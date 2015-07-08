@@ -8,8 +8,11 @@ router.get('/', function(req, res) {
   res.render('index', { title: 'SuperQUIZ' });
 });
 
-router.get('/quizes/question',quizControl.question);
-router.get('/quizes/answer',quizControl.answer);
+router.param('quizId',quizControl.load);
+
+router.get('/quizes/',quizControl.index);
+router.get('/quizes/:quizId(\\d+)',quizControl.show);
+router.get('/quizes/:quizId(\\d+)/answer',quizControl.answer);
 router.get('/author',function(req,res){
 	res.render('author');
 });
