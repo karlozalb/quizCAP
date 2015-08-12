@@ -3,6 +3,7 @@ var router = express.Router();
 
 var quizControl = require('../controllers/quiz_controller.js');
 var commentController = require('../controllers/comment_controller');
+var sessionController = require('../controllers/session_controller');
 
 /* GET home page. */
 router.get('/', function(req, res) {
@@ -10,6 +11,10 @@ router.get('/', function(req, res) {
 });
 
 router.param('quizId',quizControl.load);
+
+router.get('/login', sessionController.new);
+router.post('/login', sessionController.create);
+router.get('/logout',sessionController.destroy);
 
 router.get('/quizes/',quizControl.index);
 router.get('/quizes/:quizId(\\d+)',quizControl.show);
